@@ -1,8 +1,11 @@
 import streams.Myfilereader;
+import streams.Myfilereaderbuffered;
 import streams.Myfilewritter;
+import streams.Myfilewritterbuffered;
 
 public class Main {
     public static void main(String[] args) {
+
         Myfilereader accessing = new Myfilereader();
         accessing.readd();
 
@@ -11,6 +14,16 @@ public class Main {
 
         Myfilewritter writting2 = new Myfilewritter();
         writting2.writeNonExistentFile();
+
+        Myfilereaderbuffered accessing2 = new Myfilereaderbuffered();
+        accessing2.readd();
+
+        Myfilewritterbuffered writting3 = new Myfilewritterbuffered();
+        writting3.write();
+
+        Myfilewritterbuffered writting4 = new Myfilewritterbuffered();
+        writting4.writeNonExistentFile();
+
     }
 }
 
