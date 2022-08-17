@@ -1,4 +1,4 @@
-package streams;
+package streams.single;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

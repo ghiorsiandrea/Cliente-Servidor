@@ -1,7 +1,7 @@
-import streams.Myfilereader;
-import streams.Myfilereaderbuffered;
-import streams.Myfilewritter;
-import streams.Myfilewritterbuffered;
+import streams.single.Myfilereader;
+import streams.single.Myfilereaderbuffered;
+import streams.single.Myfilewritter;
+import streams.single.Myfilewritterbuffered;
 
 public class Main {
     public static void main(String[] args) {
