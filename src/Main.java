@@ -1,13 +1,16 @@
 import streams.Myfilereader;
-
-import javax.imageio.IIOException;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
+import streams.Myfilewritter;
 
 public class Main {
     public static void main(String[] args) {
-        Myfilereader accediendo = new Myfilereader();
-        accediendo.lee();
+        Myfilereader accessing = new Myfilereader();
+        accessing.readd();
+
+        Myfilewritter writting = new Myfilewritter();
+        writting.write();
+
+        Myfilewritter writting2 = new Myfilewritter();
+        writting2.writeNonExistentFile();
     }
 }
 

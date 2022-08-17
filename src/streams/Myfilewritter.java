@@ -1,4 +1,32 @@
 package streams;
 
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Myfilewritter {
+    public void write() {
+        String frase = "Esta es una prueba de escritura";
+        try {
+            FileWriter escritura = new FileWriter("/home/dalga/andrea/proyectos/writeme.txt");
+            for (int i = 0; i < frase.length(); i++) {
+                escritura.write(frase.charAt(i));
+            }
+            escritura.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void writeNonExistentFile() {
+        String frase = "Esta es una prueba de escritura";
+        try {
+            FileWriter escritura = new FileWriter("/home/dalga/andrea/proyectos/writeme2.txt");
+            for (int i = 0; i < frase.length(); i++) {
+                escritura.write(frase.charAt(i));
+            }
+            escritura.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
