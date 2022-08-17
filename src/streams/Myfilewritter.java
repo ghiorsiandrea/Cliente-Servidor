@@ -3,6 +3,9 @@ package streams;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * This class was created attending the course of Streams - Java - of "Pildoras Informaticas"
+ */
 public class Myfilewritter {
     public void write() {
         String frase = "Esta es una prueba de escritura";

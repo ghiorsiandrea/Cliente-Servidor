@@ -1,8 +1,7 @@
 package streams;
 
-import javax.imageio.IIOException;
-import java.io.*;
-import java.nio.charset.Charset;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * This class was created attending the course of Streams - Java - of "Pildoras Informaticas"
