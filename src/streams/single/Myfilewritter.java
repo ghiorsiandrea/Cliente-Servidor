@@ -10,7 +10,7 @@ public class Myfilewritter {
     public void write() {
         String frase = "Esta es una prueba de escritura";
         try {
-            FileWriter escritura = new FileWriter("/home/dalga/andrea/proyectos/Cliente-Servidor/streams/writeme.txt");
+            FileWriter escritura = new FileWriter("/home/dalga/andrea/proyectos/Cliente-Servidor/streams/single/writeme.txt");
             for (int i = 0; i < frase.length(); i++) {
                 escritura.write(frase.charAt(i));
             }
@@ -23,7 +23,7 @@ public class Myfilewritter {
     public void writeNonExistentFile() {
         String frase = "Esta es una prueba de escritura";
         try {
-            FileWriter escritura = new FileWriter("/home/dalga/andrea/proyectos/Cliente-Servidor/streams/writeme2.txt");
+            FileWriter escritura = new FileWriter("/home/dalga/andrea/proyectos/Cliente-Servidor/streams/single/writeme2.txt");
             for (int i = 0; i < frase.length(); i++) {
                 escritura.write(frase.charAt(i));
             }
