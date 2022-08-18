@@ -11,7 +11,7 @@ public class Myfilereader {
 
     public void readd() {
         try {
-            FileReader entrada = new FileReader("/home/dalga/andrea/proyectos/Cliente-Servidor/streams/readme.txt");
+            FileReader entrada = new FileReader("/home/dalga/andrea/proyectos/Cliente-Servidor/streams/single/readme.txt");
             int c = entrada.read();
             while (c != -1) {
                 char letra =(char) c;
