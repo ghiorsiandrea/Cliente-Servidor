@@ -40,6 +40,7 @@ public class ReadingWrittingByte {
                 writting.write(datos_nuevo_fichero[i]);
             }
             writting.close();
+
         } catch (IOException e) {
             e.printStackTrace();
             System.out.println("Error al crear la imagen");
