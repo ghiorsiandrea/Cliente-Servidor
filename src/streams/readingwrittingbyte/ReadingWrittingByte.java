@@ -4,8 +4,10 @@ import java.io.*;
 
 public class ReadingWrittingByte {
     public int[] readdd() {
+
         int contador = 0;
         int datos_entrada[] = new int[93193];
+
         try {
             FileInputStream reading = new FileInputStream(
                     "/home/dalga/andrea/proyectos/Cliente-Servidor/streams/readingwritting/capture.jpg");
