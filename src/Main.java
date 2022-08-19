@@ -1,8 +1,11 @@
+import events.MyEvents;
 import streams.readingwrittingbyte.ReadingWrittingByte;
 import streams.single.Myfilereader;
 import streams.single.Myfilereaderbuffered;
 import streams.single.Myfilewritter;
 import streams.single.Myfilewritterbuffered;
+
+import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
@@ -45,8 +48,11 @@ public class Main {
         ReadingWrittingByte readingWrittingByte = new ReadingWrittingByte();
         readingWrittingByte.writee(readingWrittingByte.readdd());
 
+        //Excersice Seven, Curso Pildoras Informaticas - Eventos I. Vídeo 65
 
-
+        MyEvents myEvents = new MyEvents();
+        myEvents.setVisible(true);
+        myEvents.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
 
