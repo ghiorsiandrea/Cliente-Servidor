@@ -15,5 +15,9 @@ public class MyEvents extends JFrame{
 }
 
 class LaminaBotones extends JPanel {
+JButton bluebutton = new JButton("Blue");
 
+public LaminaBotones() {
+    add(bluebutton);
+}
 }
