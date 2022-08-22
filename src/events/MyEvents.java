@@ -1,6 +1,8 @@
 package events;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class MyEvents extends JFrame {
@@ -15,12 +17,19 @@ public class MyEvents extends JFrame {
 }
 
 // TERCER EVENTO - LA LAMINA ES EL LISTENER
-class LaminaBotones extends JPanel {
+class LaminaBotones extends JPanel implements ActionListener {
+
     //SEGUNDO EVENTO - OBJETO FUENTE
     JButton bluebutton = new JButton("Blue");
 
     public LaminaBotones() {
         // PRIMER EVENTO
         add(bluebutton);
+        bluebutton.addActionListener(this);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
 }
