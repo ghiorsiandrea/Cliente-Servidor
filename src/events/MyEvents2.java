@@ -13,11 +13,9 @@ public class MyEvents2 extends JFrame {
         LaminaBotones2 milaminaBotones2 = new LaminaBotones2();
         add(milaminaBotones2);
     }
-
 }
 
-// TERCER EVENTO - OBJETO LISTENER - LA LAMINA
-class LaminaBotones2 extends JPanel implements ActionListener {
+class LaminaBotones2 extends JPanel {
 
     //SEGUNDO EVENTO - OBJETO FUENTE
     JButton bluebutton = new JButton("Blue");
@@ -29,26 +27,34 @@ class LaminaBotones2 extends JPanel implements ActionListener {
         add(bluebutton);
         add(yellowbutton);
         add(redbutton);
-        bluebutton.addActionListener(this);
-        yellowbutton.addActionListener(this);
-        redbutton.addActionListener(this);
+
+        ColorFondo blue = new ColorFondo(Color.BLUE);
+        ColorFondo yellow = new ColorFondo(Color.YELLOW);
+        ColorFondo red = new ColorFondo(Color.RED);
+
+        bluebutton.addActionListener(blue);
+        yellowbutton.addActionListener(yellow);
+        redbutton.addActionListener(red);
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
+    // TERCER EVENTO - OBJETO LISTENER - COLOR FONDO
+    private class ColorFondo implements ActionListener {
 
-        Object buttonpressed = e.getSource();
+        private Color colordeFondo;
 
-        if (buttonpressed == bluebutton) {
-            setBackground(Color.blue);
+        public ColorFondo(Color c) {
+            colordeFondo = c;
         }
 
-        if (buttonpressed == yellowbutton) {
-            setBackground(Color.yellow);
-        }
+        @Override
+        public void actionPerformed(ActionEvent e) {
 
-        if (buttonpressed == redbutton) {
-            setBackground(Color.red);
+            // When is a non-static and inner class this class contain a reference to this (outer class)
+            // setBackground(colordeFondo);
+            LaminaBotones2.this.setBackground(colordeFondo);
         }
     }
+
 }
+
+
