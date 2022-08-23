@@ -9,7 +9,7 @@ public class MyEvents2 extends JFrame {
 
     public MyEvents2() {
         setTitle("Buttons and Events2");
-        setBounds(700, 300, 500, 300);
+        setBounds(500, 100, 300, 200);
         LaminaBotones2 milaminaBotones2 = new LaminaBotones2();
         add(milaminaBotones2);
     }
