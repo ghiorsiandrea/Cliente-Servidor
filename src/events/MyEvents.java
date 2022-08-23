@@ -42,9 +42,12 @@ class LaminaBotones extends JPanel implements ActionListener {
         if (buttonpressed == bluebutton) {
             setBackground(Color.blue);
         }
+
         if (buttonpressed == yellowbutton) {
             setBackground(Color.yellow);
-        } else {
+        }
+
+        if (buttonpressed == redbutton) {
             setBackground(Color.red);
         }
     }
