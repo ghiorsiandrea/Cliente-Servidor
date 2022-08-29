@@ -32,11 +32,14 @@ class Acounts{
             if(cuentas[origin]<amount) {
                 return;
             }
-            System.out.println(Thread.currentThread());
+            Thread.sleep(800);
             cuentas[origin]-=amount;
-            System.out.printf("%10.2f de %d para %d", amount, origin, destiny);
             cuentas[destiny]+=amount;
-            System.err.printf("Saldo total: %10.2f%n", getTotalBalance());
+            System.out.println(Thread.currentThread());
+            System.out.printf("%10.2f de %d para %d  - ", amount, origin, destiny);
+            System.err.printf("Saldo total: %10.2f%n\n", getTotalBalance());
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         } finally {
             closeBank.unlock();
         }
@@ -66,7 +69,7 @@ class ExecuteTransfer implements Runnable{
                 int toTheAccount=(int)(Math.random()*100);
                 double AmmountTrans=maximo*Math.random();
                 banco.transfer(origen, toTheAccount, AmmountTrans);
-                Thread.sleep(6000);
+                Thread.sleep(1000);
             }
         }catch(InterruptedException e) {
 
