@@ -6,10 +6,10 @@ import java.awt.event.ActionListener;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class UsingThreads2 {
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         JFrame marco = new ReboundFramework2();
         marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         marco.setVisible(true);
@@ -35,7 +35,7 @@ class BallThreads2 implements Runnable {
             ball2.mueve_pelota(component.getBounds());
             component.paint(component.getGraphics());
             try {
-                Thread.sleep(5);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -125,6 +125,7 @@ class ReboundFramework2 extends JFrame {
             }
         });
 
+        //TODO
         ponerBoton(laminaBotones, "EXIT", evento -> System.exit(0));
 
         ponerBoton(laminaBotones, "STOP", evento -> detener());
@@ -150,6 +151,7 @@ class ReboundFramework2 extends JFrame {
         Ball2 ball2 = new Ball2();
         lamina.add(ball2);
         Runnable r = new BallThreads2(ball2, lamina);
+        // TODO
         t = new Thread(r);
         t.start();
     }
@@ -157,4 +159,6 @@ class ReboundFramework2 extends JFrame {
     public void detener(){
         t.interrupt();
     }
+
+    //ReentrantLock
 }

@@ -8,7 +8,6 @@ import java.awt.event.*;
 
 public class UsingThreads {
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         JFrame marco = new ReboundFramework2();
         marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         marco.setVisible(true);
