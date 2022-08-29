@@ -4,8 +4,6 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Bank {
-
-
     public static final int SIZE_ARRAY = 101;
 
     public static void main(String[] args) {
