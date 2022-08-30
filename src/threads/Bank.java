@@ -8,70 +8,95 @@ public class Bank {
 
     public static void main(String[] args) {
 
-        Acounts a=new Acounts();
-        for(int i=1; i< SIZE_ARRAY; i++) {
-            ExecuteTransfer r=new ExecuteTransfer(a, i, 2000);
-            Thread t=new Thread(r);
+        Acounts a = new Acounts();
+        for (int i = 1; i < SIZE_ARRAY; i++) {
+            ExecuteTransfer r = new ExecuteTransfer(a, i, 2000);
+            Thread t = new Thread(r);
             t.start();
         }
     }
 }
-class Acounts{
+
+class Acounts {
     private final double[] cuentas;
     private Lock closeBank = new ReentrantLock();
+
     public Acounts() {
-        cuentas=new double[Bank.SIZE_ARRAY];
-        for(int i=1; i<Bank.SIZE_ARRAY; i++) {
-            cuentas[i]=2000;
+        cuentas = new double[Bank.SIZE_ARRAY];
+        for (int i = 1; i < Bank.SIZE_ARRAY; i++) {
+            cuentas[i] = 2000;
         }
     }
+
     public void transfer(int origin, int destiny, double
             amount) {
         closeBank.lock();
         try {
-            if(cuentas[origin]<amount) {
+            String denied = "------------------------------------------------------------ TRANSACTION DENIED  ---------------------------------------------------------\n";
+//            String oringinAcc = String.format("   NON SUFFICIENT AMOUNT ON ACCOUNT Nº %10.2d", origin);
+//            String balance = String.format("   BALANCE %10.2d", cuentas[origin]);
+//            String amountt = String.format("   And you are trying to transfer:   %10.2d", amount);
+
+            if (cuentas[origin] < amount) {
+                System.err.println(denied + "   NON SUFFICIENT AMOUNT ON ACCOUNT Nº " + origin + "   BALANCE: "
+                        + cuentas[origin] + "   And you are trying to transfer:  " + amount + "\n"+ denied);
                 return;
             }
-            Thread.sleep(800);
-            cuentas[origin]-=amount;
-            cuentas[destiny]+=amount;
+            Thread.sleep(100);
+            cuentas[origin] -= amount;
+            cuentas[destiny] += amount;
             System.out.println(Thread.currentThread());
             System.out.printf("%10.2f de %d para %d  - ", amount, origin, destiny);
-            System.err.printf("Saldo total: %10.2f%n\n", getTotalBalance());
+            System.out.printf("Balance: %10.2f%n\n", getTotalBalance());
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         } finally {
             closeBank.unlock();
         }
+
+        class Tests {
+
+            String denied = "------------------------------------------------------------ TRANSACTION DENIED  ---------------------------------------------------------\n";
+            String oringinAcc = String.format("   NON SUFFICIENT AMOUNT ON ACCOUNT Nº %10.2d", origin);
+            String balance = String.format("   BALANCE %10.2d", cuentas[origin]);
+            String amountt = String.format("   And you are trying to transfer:   %10.2d", amount);
+
         }
+    }
 
     public double getTotalBalance() {
-        double AcountsTotal=0;
-        for(double a: cuentas) {
-            AcountsTotal+=a;
+        double AcountsTotal = 0;
+        for (double a : cuentas) {
+            AcountsTotal += a;
         }
         return AcountsTotal;
     }
+
 }
-class ExecuteTransfer implements Runnable{
+
+
+
+class ExecuteTransfer implements Runnable {
     private Acounts banco;
     private int origen;
     private double maximo;
+
     public ExecuteTransfer(Acounts banco, int origen, double maximo) {
-        this.banco=banco;
-        this.origen=origen;
-        this.maximo=maximo;
+        this.banco = banco;
+        this.origen = origen;
+        this.maximo = maximo;
     }
+
     public void run() {
         try {
-            while(true) {
+            while (true) {
 
-                int toTheAccount=(int)(Math.random()*100);
-                double AmmountTrans=maximo*Math.random();
+                int toTheAccount = (int) (Math.random() * 100);
+                double AmmountTrans = maximo * Math.random();
                 banco.transfer(origen, toTheAccount, AmmountTrans);
                 Thread.sleep(1000);
             }
-        }catch(InterruptedException e) {
+        } catch (InterruptedException e) {
 
         }
     }
