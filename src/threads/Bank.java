@@ -1,5 +1,6 @@
 package threads;
 
+import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -15,17 +16,21 @@ public class Bank {
             t.start();
         }
     }
+
 }
 
 class Acounts {
     private final double[] cuentas;
     private Lock closeBank = new ReentrantLock();
+    private Condition sufficientBalance;
 
     public Acounts() {
         cuentas = new double[Bank.SIZE_ARRAY];
         for (int i = 1; i < Bank.SIZE_ARRAY; i++) {
             cuentas[i] = 2000;
         }
+
+        sufficientBalance = closeBank.newCondition();
     }
 
     public void transfer(int origin, int destiny, double amount) {
@@ -36,8 +41,9 @@ class Acounts {
             String balance = String.format("   BALANCE %10.2f", cuentas[origin]);
             String amountt = String.format("   And you are trying to transfer:   %10.2f", amount);
 
-            if (cuentas[origin] < amount) {
+            while (cuentas[origin] < amount) {
                 System.err.println(denied + oringinAcc + balance + amountt + "\n" + denied);
+                sufficientBalance.await();
                 return;
             }
             Thread.sleep(100);
@@ -46,6 +52,7 @@ class Acounts {
             System.out.println(Thread.currentThread());
             System.out.printf("%10.2f de %d para %d  - ", amount, origin, destiny);
             System.out.printf("Balance: %10.2f%n\n", getTotalBalance());
+            sufficientBalance.signalAll();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         } finally {
