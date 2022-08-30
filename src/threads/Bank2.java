@@ -2,7 +2,11 @@ package threads;
 
 /**
  * Here we can appreciatte that in case that we had only one condition (sufficient balance - BANK) is more efficient the
- * solution provided by the use of the reserved word Synchronized  + wait + notifyAll (BANK 2)
+ * solution provided by the use of the reserved word Synchronized (OBJECT)  + wait + notifyAll (BANK 2), it cames with
+ * an implicit closing.
+ *
+ * In case we need define more than one condition, its better use the class Reentrant Lock with the Interface Condition
+ * whit await and SignalAll (we need to define an explicit closing)
  */
 
 public class Bank2 {
