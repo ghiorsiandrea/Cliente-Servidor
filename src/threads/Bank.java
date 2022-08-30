@@ -28,18 +28,16 @@ class Acounts {
         }
     }
 
-    public void transfer(int origin, int destiny, double
-            amount) {
+    public void transfer(int origin, int destiny, double amount) {
         closeBank.lock();
         try {
             String denied = "------------------------------------------------------------ TRANSACTION DENIED  ---------------------------------------------------------\n";
-//            String oringinAcc = String.format("   NON SUFFICIENT AMOUNT ON ACCOUNT Nº %10.2d", origin);
-//            String balance = String.format("   BALANCE %10.2d", cuentas[origin]);
-//            String amountt = String.format("   And you are trying to transfer:   %10.2d", amount);
+            String oringinAcc = String.format("   NON SUFFICIENT AMOUNT ON ACCOUNT Nº %d", origin);
+            String balance = String.format("   BALANCE %10.2f", cuentas[origin]);
+            String amountt = String.format("   And you are trying to transfer:   %10.2f", amount);
 
             if (cuentas[origin] < amount) {
-                System.err.println(denied + "   NON SUFFICIENT AMOUNT ON ACCOUNT Nº " + origin + "   BALANCE: "
-                        + cuentas[origin] + "   And you are trying to transfer:  " + amount + "\n"+ denied);
+                System.err.println(denied + oringinAcc + balance + amountt + "\n" + denied);
                 return;
             }
             Thread.sleep(100);
@@ -54,14 +52,6 @@ class Acounts {
             closeBank.unlock();
         }
 
-        class Tests {
-
-            String denied = "------------------------------------------------------------ TRANSACTION DENIED  ---------------------------------------------------------\n";
-            String oringinAcc = String.format("   NON SUFFICIENT AMOUNT ON ACCOUNT Nº %10.2d", origin);
-            String balance = String.format("   BALANCE %10.2d", cuentas[origin]);
-            String amountt = String.format("   And you are trying to transfer:   %10.2d", amount);
-
-        }
     }
 
     public double getTotalBalance() {
@@ -73,8 +63,6 @@ class Acounts {
     }
 
 }
-
-
 
 class ExecuteTransfer implements Runnable {
     private Acounts banco;
