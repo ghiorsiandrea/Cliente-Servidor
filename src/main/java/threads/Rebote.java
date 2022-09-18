@@ -1,4 +1,4 @@
-package threads;
+package main.java.threads;
 import java.awt.geom.*;
 import javax.swing.*;
 import java.util.*;

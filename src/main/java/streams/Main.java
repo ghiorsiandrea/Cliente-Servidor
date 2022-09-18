@@ -1,10 +1,10 @@
-package streams;
+package main.java.streams;
 
-import streams.readingwrittingbyte.ReadingWrittingByte;
-import streams.single.Myfilereader;
-import streams.single.Myfilereaderbuffered;
-import streams.single.Myfilewritter;
-import streams.single.Myfilewritterbuffered;
+import main.java.streams.readingwrittingbyte.ReadingWrittingByte;
+import main.java.streams.single.Myfilereader;
+import main.java.streams.single.Myfilereaderbuffered;
+import main.java.streams.single.Myfilewritter;
+import main.java.streams.single.Myfilewritterbuffered;
 
 public class Main {
 

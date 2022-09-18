@@ -1,4 +1,4 @@
-package streams.single;
+package main.java.streams.single;
 
 import java.io.*;
 
@@ -11,7 +11,7 @@ public class Myfilewritterbuffered {
     public void write() {
         String frase = "Esta es una prueba de escritura con BUFFERS";
         try {
-            FileWriter escritura = new FileWriter("/home/dalga/andrea/proyectos/Cliente-Servidor/streams/single/writemebuffer.txt");
+            FileWriter escritura = new FileWriter("/home/dalga/andrea/proyectos/Cliente-Servidor/main.java.streams/single/writemebuffer.txt");
             BufferedWriter mybuffer = new BufferedWriter(escritura);
             mybuffer.write(frase);
             mybuffer.flush();
@@ -23,7 +23,7 @@ public class Myfilewritterbuffered {
     public void writeNonExistentFile() {
         String frase = "Esta es una prueba de escritura con BUFFERS";
         try {
-            FileWriter escritura = new FileWriter("/home/dalga/andrea/proyectos/Cliente-Servidor/streams/single/writemebuffer2.txt");
+            FileWriter escritura = new FileWriter("/home/dalga/andrea/proyectos/Cliente-Servidor/main.java.streams/single/writemebuffer2.txt");
             BufferedWriter mybuffer = new BufferedWriter(escritura);
             mybuffer.write(frase);
             mybuffer.flush();

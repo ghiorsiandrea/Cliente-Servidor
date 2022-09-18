@@ -1,12 +1,13 @@
-package threads;
+package main.java.threads;
 
-import java.awt.geom.*;
 import javax.swing.*;
-import java.util.*;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionListener;
+import java.awt.geom.Ellipse2D;
+import java.awt.geom.Rectangle2D;
+import java.util.ArrayList;
 
-public class UsingThreads {
+public class UsingThreads2 {
     public static void main(String[] args) {
         JFrame marco = new ReboundFramework2();
         marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -14,12 +15,12 @@ public class UsingThreads {
     }
 }
 
-class BallThreads implements Runnable {
+class BallThreads2 implements Runnable {
 
     private final Ball2 ball2;
     private final Component component;
 
-    public BallThreads(Ball2 oneBall2, Component oneComponent) {
+    public BallThreads2(Ball2 oneBall2, Component oneComponent) {
         ball2 = oneBall2;
         component = oneComponent;
     }
@@ -33,7 +34,7 @@ class BallThreads implements Runnable {
             ball2.mueve_pelota(component.getBounds());
             component.paint(component.getGraphics());
             try {
-                Thread.sleep(5);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
@@ -42,7 +43,7 @@ class BallThreads implements Runnable {
 }
 //Movimiento de la pelota-----------------------------------------------------------------------------------------
 
-class Ball {
+class Ball2 {
 
     private static final int TAMX = 15;
     private static final int TAMY = 15;
@@ -85,7 +86,7 @@ class Ball {
 
 // L�mina que dibuja las pelotas----------------------------------------------------------------------
 
-class LeafBall extends JPanel {
+class LeafBall2 extends JPanel {
 
     //A�adimos pelota a la l�mina
 
@@ -107,15 +108,15 @@ class LeafBall extends JPanel {
 
 //Marco con l�mina y botones------------------------------------------------------------------------------
 
-class ReboundFramework extends JFrame {
+class ReboundFramework2 extends JFrame {
 
-    public ReboundFramework() {
+    public ReboundFramework2() {
         setBounds(600, 300, 400, 350);
         setTitle("Rebotes");
         lamina = new LeafBall2();
         add(lamina, BorderLayout.CENTER);
         JPanel laminaBotones = new JPanel();
-        ponerBoton(laminaBotones, "Dale!", evento -> {
+        ponerBoton(laminaBotones, "GO!", evento -> {
             try {
                 comienza_el_juego();
             } catch (InterruptedException e) {
@@ -123,7 +124,11 @@ class ReboundFramework extends JFrame {
             }
         });
 
-        ponerBoton(laminaBotones, "Salir", evento -> System.exit(0));
+        //TODO
+        ponerBoton(laminaBotones, "EXIT", evento -> System.exit(0));
+
+        ponerBoton(laminaBotones, "STOP", evento -> detener());
+
         add(laminaBotones, BorderLayout.SOUTH);
     }
 
@@ -138,12 +143,21 @@ class ReboundFramework extends JFrame {
     //A�ade pelota y la bota 1000 veces
 
     private final LeafBall2 lamina;
+    Thread t;
+
 
     public void comienza_el_juego() throws InterruptedException {
         Ball2 ball2 = new Ball2();
         lamina.add(ball2);
         Runnable r = new BallThreads2(ball2, lamina);
-        Thread t = new Thread(r);
+        // TODO
+        t = new Thread(r);
         t.start();
     }
+
+    public void detener(){
+        t.interrupt();
+    }
+
+    //ReentrantLock
 }

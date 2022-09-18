@@ -1,4 +1,4 @@
-package streams.readingwrittingbyte;
+package main.java.streams.readingwrittingbyte;
 
 import java.io.*;
 
@@ -10,7 +10,7 @@ public class ReadingWrittingByte {
 
         try {
             FileInputStream reading = new FileInputStream(
-                    "/home/dalga/andrea/proyectos/Cliente-Servidor/streams/readingwritting/capture.jpg");
+                    "/home/dalga/andrea/proyectos/Cliente-Servidor/main.java.streams/readingwritting/capture.jpg");
             boolean final_ar = false;
             while (!final_ar) {
                 int byte_entrada = reading.read();
@@ -34,7 +34,7 @@ public class ReadingWrittingByte {
 
         try {
             FileOutputStream writting = new FileOutputStream(
-                    "/home/dalga/andrea/proyectos/Cliente-Servidor/streams/readingwritting/capture_COPIA.jpg");
+                    "/home/dalga/andrea/proyectos/Cliente-Servidor/main.java.streams/readingwritting/capture_COPIA.jpg");
 
             for (int i = 0; i < datos_nuevo_fichero.length; i++) {
                 writting.write(datos_nuevo_fichero[i]);

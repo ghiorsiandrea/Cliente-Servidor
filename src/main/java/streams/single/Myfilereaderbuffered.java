@@ -1,4 +1,4 @@
-package streams.single;
+package main.java.streams.single;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -12,7 +12,7 @@ public class Myfilereaderbuffered {
 
     public void readd() {
         try {
-            FileReader entrada = new FileReader("/home/dalga/andrea/proyectos/Cliente-Servidor/streams/single/readmebuffer.txt");
+            FileReader entrada = new FileReader("/home/dalga/andrea/proyectos/Cliente-Servidor/main.java.streams/single/readmebuffer.txt");
             BufferedReader mybuffer = new BufferedReader(entrada);
             String linea = "";
             while (linea != null) {

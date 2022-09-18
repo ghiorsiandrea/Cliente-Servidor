@@ -1,4 +1,4 @@
-package threads;
+package main.java.threads;
 
 /**
  * Here we can appreciatte that in case that we had only one condition (sufficient balance - BANK) is more efficient the
