@@ -2,6 +2,7 @@
 
 
 <div align="middle">
+
 <h1>I will introduce you to "Java-Course"</h1>
 </div>
 
@@ -15,12 +16,12 @@
 <br>
 <br>
 
-`In this project we will work with:`
+`In this project we work with:`
 
 <br>
 ✅ Streams, <br>
 ✅ Events <br>
-✅Threads <br>
+✅ Threads <br>
 <br>
 In order to lately made a chat application using threads and sockets.
 <br>
